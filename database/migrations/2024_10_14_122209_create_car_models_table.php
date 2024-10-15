@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('car_models', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            //----------------------
+            $table->unsignedInteger("idMaker");
+            $table->string("name");
         });
     }
 
