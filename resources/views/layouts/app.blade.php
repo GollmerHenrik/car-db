@@ -12,7 +12,8 @@
 <body>
     <div id="app">
         <div class="container">
-
+            <a href="{{route("makers")}}">Makers</a>
+            <a href="{{route("fuels")}}">Fuels</a>
         </div>
     </div>
     <main class="py-4">

@@ -1,18 +1,14 @@
 <?php
- 
+
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
-use App\Models\Maker;
- 
-class MakerController extends Controller
+use App\Models\Fuel;
+class FuelsContoller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view ('makers/list', ['entities' => Maker::all()]);
+        return view ('fuels/list', ['entities' => Fuel::all()]); // "/list" idk kell e
     }
  
     /**
@@ -44,7 +40,7 @@ class MakerController extends Controller
      */
     public function edit(string $id)
     {
-        return view("makers/edit",["entity"=>Maker::find($id)]);
+        //
     }
  
     /**
@@ -52,11 +48,7 @@ class MakerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $maker=Maker::findOrFail($id);
-        $maker->name=$request->name;
-        
-        $maker->save();
-        return redirect()->route('makers.index');
+        //
     }
  
     /**
@@ -64,10 +56,6 @@ class MakerController extends Controller
      */
     public function destroy(string $id)
     {
-        $maker=Maker::findOrFail($id);
-        $maker->delete();
-
-        return redirect()->route("makers")->with('success', 'Element deleted successfully.');
+        //
     }
 }
- 
