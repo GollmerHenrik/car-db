@@ -20,7 +20,7 @@ class MakerController extends Controller
      */
     public function create()
     {
-        //
+        
     }
  
     /**
@@ -28,7 +28,11 @@ class MakerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $maker =new Maker();
+        $maker->name = $request->input('name');
+        $maker->logo = $request->input('name').".png";
+        $maker->save();
+        return redirect()->route('makers')->with("success","sikeres létrehozás");
     }
  
     /**
@@ -54,9 +58,10 @@ class MakerController extends Controller
     {
         $maker=Maker::findOrFail($id);
         $maker->name=$request->name;
+        $maker->logo = $request->logo;
         
         $maker->save();
-        return redirect()->route('makers.index');
+        return redirect()->route('makers')->with('success', 'Gyártó módosítva.');
     }
  
     /**

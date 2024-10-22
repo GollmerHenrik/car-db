@@ -24,7 +24,10 @@ class FuelsContoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fuels =new Fuel();
+        $fuels->name = $request->input('name');
+        $fuels->save();
+        return redirect()->route('fuels')->with("success","sikeres létrehozás");
     }
  
     /**
@@ -40,7 +43,7 @@ class FuelsContoller extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view("fuels/edit",["entity"=>Fuel::find($id)]);
     }
  
     /**
@@ -48,7 +51,11 @@ class FuelsContoller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fuel=Fuel::findOrFail($id);
+        $fuel->name=$request->name;
+        
+        $fuel->save();
+        return redirect()->route('fuels')->with('success', 'Üzemanyag módosítva.');
     }
  
     /**
@@ -56,6 +63,9 @@ class FuelsContoller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $fuel=Fuel::findOrFail($id);
+        $fuel->delete();
+
+        return redirect()->route("fuels")->with('success', 'Element deleted successfully.');
     }
 }
