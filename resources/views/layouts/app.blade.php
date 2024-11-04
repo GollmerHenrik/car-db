@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', 'app()->getLocale())')}}">
 <head>
     <meta charset="UTF-8">
@@ -14,8 +13,8 @@
         <div class="container">
             <a href="{{route("makers")}}">Makers</a>
             <a href="{{route("fuels")}}">Fuels</a>
-        </div>
-    </div>
+
+            </div>
     <main class="py-4">
         <div>
             keresés<br>

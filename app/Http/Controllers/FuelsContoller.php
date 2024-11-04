@@ -8,7 +8,7 @@ class FuelsContoller extends Controller
 {
     public function index()
     {
-        return view ('fuels/list', ['entities' => Fuel::all()]); // "/list" idk kell e
+        return view ('fuels/list', ['entities' => Fuel::paginate(10)]); // "/list" idk kell e
     }
  
     /**

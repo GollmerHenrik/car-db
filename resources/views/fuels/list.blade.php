@@ -36,4 +36,7 @@
         @endforeach
     </tbody>
 </table>
+<div id="paginator">
+    {{$entities->links()}}
+</div>
 @endsection

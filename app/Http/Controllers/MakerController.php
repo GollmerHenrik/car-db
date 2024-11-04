@@ -12,7 +12,12 @@ class MakerController extends Controller
      */
     public function index()
     {
-        return view ('makers/list', ['entities' => Maker::all()]);
+        return view ('makers/list', ['entities' => Maker::paginate(20)]); //Maker::all()
+    }
+    public function index2($letter)
+    {
+        $entities = Maker::findByLetter($letter);
+        return view('makers.list', ['entities' => $entities]);
     }
  
     /**
@@ -74,5 +79,11 @@ class MakerController extends Controller
 
         return redirect()->route("makers")->with('success', 'Element deleted successfully.');
     }
+
+    public static function findByLetter($letter)
+    {
+        return self::where('name', 'like', $letter . '%')->paginate(10);
+    }
+ 
 }
  
