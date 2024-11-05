@@ -10,7 +10,7 @@ class Maker extends Model
     use HasFactory;
 
     public $timestamps=false;
-    
+
     public static function findByLetter($letter)
     {
         return self::where('name', 'like', $letter . '%')->paginate(10);

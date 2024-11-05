@@ -8,6 +8,15 @@
         </tr>
     </thead>
     <tbody>
+    <div>
+        @foreach (range('A', 'Z') as $letter)
+            <form action="{{ route('makers.letter', $letter) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('GET')
+                <button type="submit">{{ $letter }}</button>
+            </form>
+        @endforeach
+    </div>
     <form action="{{route("makers/store")}}" method="post">
         @csrf
         @method('POST')
@@ -41,8 +50,8 @@
         @endforeach
     </tbody>
 </table>
+
 <div id="paginator">
     {{$entities->links()}}
 </div>
-
 @endsection
