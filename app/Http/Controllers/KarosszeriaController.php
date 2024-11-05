@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Fuel;
-class FuelsContoller extends Controller
+
+class KarosszeriaController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        return view ('fuels/list', ['entities' => Fuel::paginate(20)]); // "/list" idk kell e
+        //
     }
- 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -18,18 +21,15 @@ class FuelsContoller extends Controller
     {
         //
     }
- 
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $fuels =new Fuel();
-        $fuels->name = $request->input('name');
-        $fuels->save();
-        return redirect()->route('fuels')->with("success","sikeres létrehozás");
+        //
     }
- 
+
     /**
      * Display the specified resource.
      */
@@ -37,35 +37,28 @@ class FuelsContoller extends Controller
     {
         //
     }
- 
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        return view("fuels/edit",["entity"=>Fuel::find($id)]);
+        //
     }
- 
+
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        $fuel=Fuel::findOrFail($id);
-        $fuel->name=$request->name;
-        
-        $fuel->save();
-        return redirect()->route('fuels')->with('success', 'Üzemanyag módosítva.');
+        //
     }
- 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $fuel=Fuel::findOrFail($id);
-        $fuel->delete();
-
-        return redirect()->route("fuels")->with('success', 'Element deleted successfully.');
+        //
     }
 }
