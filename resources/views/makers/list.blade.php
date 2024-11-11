@@ -20,8 +20,8 @@
     <form action="{{route("makers/store")}}" method="post">
         @csrf
         @method('POST')
-        <label for="name">Új név</label>
-        <input type="text" name="name" id="name">
+        <label for="name">Új név</label><br>
+        <input type="text" name="name" id="name"><br>
         <button type="submit">Létrehozás</button>
     </form>
         @foreach($entities as $entity)

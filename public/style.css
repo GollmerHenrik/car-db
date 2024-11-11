@@ -29,3 +29,7 @@ table{
     color: black !important;
     text-decoration: none !important;
 }
+
+.error{
+    color: red;
+}

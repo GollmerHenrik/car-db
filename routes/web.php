@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\FuelsContoller;
+use App\Http\Controllers\KarosszeriaController;
+use App\Http\Controllers\SebvaltoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MakerController;
 
@@ -21,3 +24,21 @@ Route::delete("fuels/{id}",[FuelsContoller::class,"destroy"])->name('fuels/destr
 Route::post("fuels/{id}",[FuelsContoller::class,"edit"])->name('fuels/edit');
 Route::patch('fuels/{id}', [FuelsContoller::class, 'update'])->name('fuels/update');
 //Route::put()
+
+Route::get("karosszeriak",[KarosszeriaController::class,"index"])->name("karosszeriak");
+Route::post("karosszeriak/store",[KarosszeriaController::class,"store"])->name("karosszeriak/store");
+Route::delete("karosszeriak/{id}",[KarosszeriaController::class,"destroy"])->name('karosszeriak/destroy');
+Route::post("karosszeriak/{id}",[KarosszeriaController::class,"edit"])->name('karosszeriak/edit');
+Route::patch('karosszeriak/{id}', [KarosszeriaController::class, 'update'])->name('karosszeriak/update');
+
+Route::get("sebvaltok",[SebvaltoController::class,"index"])->name("sebvaltok");
+Route::post("sebvaltok/store",[SebvaltoController::class,"store"])->name("sebvaltok/store");
+Route::delete("sebvaltok/{id}",[SebvaltoController::class,"destroy"])->name('sebvaltok/destroy');
+Route::post("sebvaltok/{id}",[SebvaltoController::class,"edit"])->name('sebvaltok/edit');
+Route::patch('sebvaltok/{id}', [SebvaltoController::class, 'update'])->name('sebvaltok/update');
+
+Route::get("colors",[ColorController::class,"index"])->name("colors");
+Route::post("colors/store",[ColorController::class,"store"])->name("colors/store");
+Route::delete("colors/{id}",[ColorController::class,"destroy"])->name('colors/destroy');
+Route::post("colors/{id}",[ColorController::class,"edit"])->name('colors/edit');
+Route::patch('colors/{id}', [ColorController::class, 'update'])->name('colors/update');

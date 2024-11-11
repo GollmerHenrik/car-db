@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Karosszeria;
+use App\Models\Color;
 use Illuminate\Http\Request;
 
-class KarosszeriaController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view ('karosszeriak/list', ['entities' => Karosszeria::paginate(20)]); // "/list" idk kell e -->igen mert az view/karosszeriak folder fájlja
+        return view("colors/list",["entities"=>Color::paginate(20)]);
     }
 
     /**
@@ -31,10 +31,13 @@ class KarosszeriaController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50',
         ]);
-        $karosszeria =new Karosszeria();
-        $karosszeria->name = $request->input('name');
-        $karosszeria->save();
-        return redirect()->route('karosszeriak')->with("success","sikeres létrehozás");
+
+        $color=new Color();
+        $color->name=$request->name;
+        $color->hexa_code=$request->hexa_code;
+
+        $color->save();
+        return redirect()->route("colors")->with("success","color created");
     }
 
     /**
@@ -50,7 +53,7 @@ class KarosszeriaController extends Controller
      */
     public function edit(string $id)
     {
-        return view("karosszeriak/edit",["entity"=>Karosszeria::find($id)]);
+        return view("colors/edit",["entity"=>Color::find($id)]);
     }
 
     /**
@@ -61,11 +64,12 @@ class KarosszeriaController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50',
         ]);
-        $karosszeria=Karosszeria::findOrFail($id);
-        $karosszeria->name=$request->name;
+        $color=Color::findOrFail($id);
+        $color->name=$request->name;
+        $color->hexa_code=$request->hexa_code;
 
-        $karosszeria->save();
-        return redirect("karosszeriak")->with('success','Karosszéria módosítva');
+        $color->save();
+        return redirect()->route("colors")->with("success","Color updated");
     }
 
     /**
@@ -73,9 +77,9 @@ class KarosszeriaController extends Controller
      */
     public function destroy(string $id)
     {
-        $karosszeria=Karosszeria::findOrFail($id);
-        $karosszeria->delete();
+        $color=Color::findOrFail($id);
+        $color->delete();
 
-        return redirect('karosszeriak')->with('success', 'Karosszéria törölve');
+        return redirect()->route("colors")->with("success","color deleted");
     }
 }

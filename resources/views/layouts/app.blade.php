@@ -14,15 +14,25 @@
         <div class="container">
             <a href="{{route("makers")}}">Makers</a>
             <a href="{{route("fuels")}}">Fuels</a>
+            <a href="{{route("karosszeriak")}}">Karosszériák</a>
+            <a href="{{route("sebvaltok")}}">Sebváltók</a>
+            <a href="{{route("colors")}}">Colors</a>
         </div>
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger error">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <main class="py-4">
-        <div>
-            keresés<br>
-            <a href=""></a>
-        </div>  
         @yield('content')
     </main>
+ 
+
     <footer class="text-center">
         
     </footer>

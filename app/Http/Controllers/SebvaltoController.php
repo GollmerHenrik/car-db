@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Karosszeria;
+use App\Models\Sebvalto;
 use Illuminate\Http\Request;
 
-class KarosszeriaController extends Controller
+class SebvaltoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view ('karosszeriak/list', ['entities' => Karosszeria::paginate(20)]); // "/list" idk kell e -->igen mert az view/karosszeriak folder fájlja
+        return view("sebvaltok/list",["entities"=>Sebvalto::paginate(20)]);
     }
 
     /**
@@ -31,10 +31,11 @@ class KarosszeriaController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50',
         ]);
-        $karosszeria =new Karosszeria();
-        $karosszeria->name = $request->input('name');
-        $karosszeria->save();
-        return redirect()->route('karosszeriak')->with("success","sikeres létrehozás");
+        $sebvalto=new Sebvalto();
+        $sebvalto->name=$request->name;
+
+        $sebvalto->save();
+        return redirect()->route("sebvaltok")->with("success","Sebváltó ltrehozva"); 
     }
 
     /**
@@ -50,7 +51,7 @@ class KarosszeriaController extends Controller
      */
     public function edit(string $id)
     {
-        return view("karosszeriak/edit",["entity"=>Karosszeria::find($id)]);
+        return view("sebvaltok/edit",["entity"=>Sebvalto::find($id)]);
     }
 
     /**
@@ -61,11 +62,11 @@ class KarosszeriaController extends Controller
         $request->validate([
             'name' => 'required|string|min:3|max:50',
         ]);
-        $karosszeria=Karosszeria::findOrFail($id);
-        $karosszeria->name=$request->name;
+        $sebvalto=Sebvalto::findOrFail($id);
+        $sebvalto->name=$request->name;
+        $sebvalto->save();
 
-        $karosszeria->save();
-        return redirect("karosszeriak")->with('success','Karosszéria módosítva');
+        return redirect()->route("sebvaltok")->with("success","Sebváltó módosítva");
     }
 
     /**
@@ -73,9 +74,8 @@ class KarosszeriaController extends Controller
      */
     public function destroy(string $id)
     {
-        $karosszeria=Karosszeria::findOrFail($id);
-        $karosszeria->delete();
-
-        return redirect('karosszeriak')->with('success', 'Karosszéria törölve');
+        $sebvalto=Sebvalto::findOrFail($id);
+        $sebvalto->delete();
+        return redirect()->route("sebvaltok")->with("success","sebvalto törölve");
     }
 }

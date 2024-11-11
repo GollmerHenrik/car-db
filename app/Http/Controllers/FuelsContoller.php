@@ -51,6 +51,9 @@ class FuelsContoller extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required|string|min:3|max:50',
+        ]);
         $fuel=Fuel::findOrFail($id);
         $fuel->name=$request->name;
         

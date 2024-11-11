@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section("content")
-    <h1>Üzemanyag Módosít</h1>
-    <form action="{{route("fuels/update",$entity->id)}}" method="post">
+    <h1>Karosszéria Módosít</h1>
+    <form action="{{route("karosszeriak/update",$entity->id)}}" method="post">
         @csrf
         @method('PATCH')
         <label for="name">Név:</label><br>
