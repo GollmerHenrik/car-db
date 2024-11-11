@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\FuelsContoller;
 use App\Http\Controllers\KarosszeriaController;
@@ -42,3 +43,9 @@ Route::post("colors/store",[ColorController::class,"store"])->name("colors/store
 Route::delete("colors/{id}",[ColorController::class,"destroy"])->name('colors/destroy');
 Route::post("colors/{id}",[ColorController::class,"edit"])->name('colors/edit');
 Route::patch('colors/{id}', [ColorController::class, 'update'])->name('colors/update');
+
+Route::get("carModels",[CarModelController::class,"index"])->name("carModels");
+Route::post("carModels/store",[CarModelController::class,"store"])->name("carModels/store");
+Route::delete("carModels/{id}",[CarModelController::class,"destroy"])->name('carModels/destroy');
+Route::post("carModels/{id}",[CarModelController::class,"edit"])->name('carModels/edit');
+Route::patch('carModels/{id}', [CarModelController::class, 'update'])->name('carModels/update');
