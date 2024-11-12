@@ -24,6 +24,9 @@ class FuelsContoller extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|min:3|max:50',
+        ]);
         $fuels =new Fuel();
         $fuels->name = $request->input('name');
         $fuels->save();

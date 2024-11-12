@@ -47,5 +47,6 @@ Route::patch('colors/{id}', [ColorController::class, 'update'])->name('colors/up
 Route::get("carModels",[CarModelController::class,"index"])->name("carModels");
 Route::post("carModels/store",[CarModelController::class,"store"])->name("carModels/store");
 Route::delete("carModels/{id}",[CarModelController::class,"destroy"])->name('carModels/destroy');
-Route::post("carModels/{id}",[CarModelController::class,"edit"])->name('carModels/edit');
+Route::post("carModels/edit/{id}",[CarModelController::class,"edit"])->name('carModels/edit');
 Route::patch('carModels/{id}', [CarModelController::class, 'update'])->name('carModels/update');
+Route::get('carModels/{idMaker}', [CarModelController::class, 'index2'])->name('carModels.idMaker');

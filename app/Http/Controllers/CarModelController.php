@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarModel;
+use App\Models\Maker;
 use Illuminate\Http\Request;
 
 class CarModelController extends Controller
@@ -12,7 +13,13 @@ class CarModelController extends Controller
      */
     public function index()
     {
-        return view("carModel/list",["entities"=>CarModel::paginate(20)]);
+        return view("carModels/list",["entities"=>CarModel::paginate(20)]);
+    }
+    public function index2($idMaker)
+    {
+        $entities = CarModel::findByModel($idMaker);
+   
+        return view('carModels/list', ['entities' => $entities]);
     }
 
     /**
@@ -30,14 +37,14 @@ class CarModelController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:3|max:50',
-            //TODO: validate, whether idMaker exists
+            'idMaker' => 'required|exists:makers,id',
         ]);
         $carModel=new CarModel();
         $carModel->name=$request->name;
         $carModel->idMaker=$request->idMaker;
 
         $carModel->save();
-        return request()->route("carModels")->with("success", "car model created");
+        return redirect()->route("carModels")->with("success", "car model created");
     }
 
     /**
@@ -53,7 +60,7 @@ class CarModelController extends Controller
      */
     public function edit(string $id)
     {
-        return view("carModel/edit",["resource"=>carModel::find($id)]);
+        return view("carModels/edit",["entity"=>carModel::find($id)]);
     }
 
     /**
@@ -63,14 +70,14 @@ class CarModelController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:3|max:50',
-            //TODO: validate, whether idMaker exists
+            //'idMaker' => 'required|exists:makers,id', valamiért ez eltöri az egészet
         ]);
         $carModel=CarModel::findOrFail($id);
         $carModel->name=$request->name;
         $carModel->idMaker=$request->idMaker;
 
         $carModel->save();
-        return request()->route("carModels")->with("success", "car model edited");
+        return redirect()->route(route: "carModels")->with("success", "car model edited");
     }
 
     /**

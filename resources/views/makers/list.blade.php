@@ -34,6 +34,12 @@
                 <td id={{$entity->id}}>{{$entity->id}}</td>
                 <td>{{$entity->name}}</td>
                 <td>
+                <form action="{{ route('carModels.idMaker', $entity->id) }}" method="GET">
+                        @csrf
+                        <button type="submit">details</button>
+                    </form>
+                </td>
+                <td>
                     <form action="{{ route('makers/edit', $entity->id) }}" method="POST">
                         @csrf
                         <button type="submit"><img src="/edit.png" alt="" height="20px"></button>

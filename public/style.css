@@ -33,3 +33,9 @@ table{
 .error{
     color: red;
 }
+.td{
+    margin: 5px;
+}
+table {
+    border-spacing: 10px;
+  }

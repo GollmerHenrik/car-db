@@ -17,6 +17,7 @@
             <a href="{{route("karosszeriak")}}">Karosszériák</a>
             <a href="{{route("sebvaltok")}}">Sebváltók</a>
             <a href="{{route("colors")}}">Colors</a>
+            <a href="{{route("carModels")}}">Modellek</a>
         </div>
     </div>
     @if ($errors->any())
