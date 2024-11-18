@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Maker>
  */
-class MakerControllerFactory extends Factory
+class MakerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +18,8 @@ class MakerControllerFactory extends Factory
     {
         return [
             'name'=> $this->faker->name,
+            'logo'=>$this->faker->filePath,
+
         ];
     }
 }
