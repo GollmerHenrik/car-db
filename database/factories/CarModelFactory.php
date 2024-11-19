@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Maker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Maker>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CarModel>
  */
-class MakerFactory extends Factory
+class CarModelFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,10 +19,10 @@ class MakerFactory extends Factory
 
     public function definition(): array
     {
+        $parent = Maker::factory()->create();
         return [
             'name'=> $this->faker->name,
-            'logo'=>$this->faker->filePath,
-
+            'idMaker'=>$parent->id,
         ];
     }
 }

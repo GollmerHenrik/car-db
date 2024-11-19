@@ -56,4 +56,6 @@ class MakerControllerTest extends TestCase
         $response->assertRedirect(route("makers"));
         $response->assertSessionHas("success","Element deleted successfully.");
     }
+
+ 
 }

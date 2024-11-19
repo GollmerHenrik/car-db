@@ -37,7 +37,7 @@ class CarModelController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:3|max:50',
-            'idMaker' => 'required|exists:makers,id',
+            //'idMaker' => 'required|exists:makers,id',
         ]);
         $carModel=new CarModel();
         $carModel->name=$request->name;
